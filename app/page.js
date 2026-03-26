@@ -335,8 +335,16 @@ export default function Home(){
     if(res.ok){setText('');fetchPosts();showToast('🎉 Posted! The internet is now judging you.');document.getElementById('feed')?.scrollIntoView({behavior:'smooth'})}
   }
 
-  async function handleSignOut(){await supabase.auth.signOut();setUser(null);showToast('👋 Signed out.')}
-  const currentUser=user?{username:user.email?.split('@')[0],avatar:'👤'}:anonUser
+  async function handleSignOut(){
+  await supabase.auth.signOut()
+  setUser(null)
+  setAnonUser(null)
+  setShowSubmit(false)
+  localStorage.removeItem('ail_anon_username')
+  localStorage.removeItem('ail_anon_avatar')
+  showToast('👋 Signed out.')
+}
+const currentUser=user?{username:user.email?.split('@')[0],avatar:'👤'}:anonUser
 
   return(
     <>

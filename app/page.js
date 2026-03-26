@@ -69,22 +69,32 @@ function JudgePanel({post,currentUser}){
   }
 
   async function startJudge(){
-    setOpen(!open)
-    if(open)return
-    if(!sessionLoaded)await loadSession()
-    if(started)return
+  setOpen(!open)
+  if(open) return
+  setLoading(true)
+  const res = await fetch(`/api/judge-session?post_id=${post.id}`)
+  const data = await res.json()
+  if(data && data.messages && data.messages.length > 0){
+    setMessages(data.messages)
+    setClosed(data.closed || false)
     setStarted(true)
-    const firstMsg=[{role:'user',content:`The defendant confesses: "${post.text}"`}]
-    setMessages(firstMsg);setLoading(true)
-    try{
-      const res=await fetch('/api/judge',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({post_id:post.id,confession:post.text,messages:firstMsg})})
-      const data=await res.json()
-      const updatedMessages=[...firstMsg,{role:'assistant',content:data.response}]
-      setMessages(updatedMessages)
-      await saveSession(updatedMessages,false)
-    }catch(e){setMessages([{role:'assistant',content:'The court is temporarily unavailable.'}])}
+    setSessionLoaded(true)
     setLoading(false)
+    return
   }
+  setSessionLoaded(true)
+  setStarted(true)
+  const firstMsg=[{role:'user',content:`The defendant confesses: "${post.text}"`}]
+  setMessages(firstMsg)
+  try{
+    const res2=await fetch('/api/judge',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({post_id:post.id,confession:post.text,messages:firstMsg})})
+    const d=await res2.json()
+    const updated=[...firstMsg,{role:'assistant',content:d.response}]
+    setMessages(updated)
+    await saveSession(updated,false)
+  }catch(e){setMessages([{role:'assistant',content:'The court is temporarily unavailable.'}])}
+  setLoading(false)
+}
 
   const round=messages.filter(m=>m.role==='user').length
   const isDefendant=currentUser?.username===post.username

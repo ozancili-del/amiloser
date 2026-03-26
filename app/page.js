@@ -557,7 +557,13 @@ export default function Home(){
           <span className="hero-badge">Judge Loser AI presiding</span>
           <span className="hero-badge">Judgment-as-a-service™</span>
         </div>
-      </div>
+        <img 
+        src="/judge-loser.png" 
+        alt="Judge Loser" 
+        style={{width:'min(400px,90vw)',marginTop:'40px',borderRadius:'16px',position:'relative',zIndex:1,animation:'fadeUp .7s .8s ease both'}}
+        />
+
+        </div>
 
       {(showSubmit||currentUser)&&(
         <section id="submit">

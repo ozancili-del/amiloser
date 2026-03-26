@@ -2,7 +2,28 @@
 import { useState } from 'react'
 import { supabase } from '@/lib/supabase'
 
-const anonNames = ['Anonymous Goblin','Brave Disaster','CertifiedMess_99','RegrettableHuman','ChaoticNeutral_42','EmotionalSupport404','BrokeAndProud_88','SoftClownEnergy','UnhingedOptimist','DisasterBeing_007']
+const anonNames = [
+  'Anonymous Goblin','Brave Disaster','User_4821','CertifiedMess_99','RegrettableHuman',
+  'ChaoticNeutral_42','EmotionalSupport404','BrokeAndProud_88','SoftClownEnergy','UnhingedOptimist',
+  'DisasterBeing_007','NobodyKnowsMe_44','GhostOfBadDecisions','AnonymousClown_99','JustAMistake_Bro',
+  'ConfusedHuman_77','ProfessionalLoser','EliteDisaster_11','ChaosAgent_404','RegretfulSoul_88',
+  'MildlyUnhinged','SilentlyEmbarrassed','ChronicOverThinker','AccidentalGenius_0','SerialApoligizer',
+  'DigitalGremlin_33','SoftFailure_22','UnstableGenius_99','PeakMediocrity','AbsoluteUnit_404',
+  'LostCause_77','ConfessionalKing','GuiltyAsCharged_11','CertifiedChaos','PublicDisgrace_88',
+  'AnonymousMess_55','QuietDisaster_99','LoudlyWrong_22','SlightlyOffTrack','TotallyFine_Not',
+  'WalkingRedFlag_33','EmotionalSupport404','ProfessionalMistake','AccidentalVillain_77','SorryNotSorry_11',
+  'ChaoticGood_404','NeutralEvil_99','LawfulMess_22','TrueNeutral_77','ChaoticNeutral_55',
+  'RegrettableChoice_88','BadDecision_404','PoorJudgment_11','LifeOfRegrets_99','SerialMistaker_22',
+  'OopsIDidiItAgain_77','WhoAuthorisedThis_33','UnsupervisedAdult_55','FunctioningDisaster_88','BarelyAdult_404',
+  'TechnicallyAlive_11','ExistentiallyTired_99','SpirituallyBroke_22','EmotionallyAmbiguous_77','MentallyElsewhere_33',
+  'PhysicallyPresent_55','SociallyAwkward_88','ProfessionallyQuestionable_404','PersonallyEmbarrassing_11','PubliclyHumiliated_99',
+  'PrivatelyDisgraced_22','SecretlyAMess_77','OpenlyConfused_33','OfficiallyDone_55','UnofficiallyGuilty_88',
+  'CertifiedLoser_404','VerifiedMess_11','AuthenticDisaster_99','GenuinelyLost_22','TrulyUnhinged_77',
+  'HonestlyBroke_33','LiterallyWrong_55','FigurativelyDead_88','MetaphoricallyDone_404','SymbolicallyGuilty_11',
+  'IronicallyConfident_99','SarcasticallyFine_22','LiterallyFine_77','ActuallyNotFine_33','CompletelyOkay_Not',
+  'TotallyNormal_55','AbsolutelyFine_88','DefinitelyNotCrying_404','ClearlyInDenial_11','ObviouslyAMess_99',
+  'ApparentlyGuilty_22','EvidentlyLost_77','ManifestlyWrong_33','PatentlyAbsurd_55','FlagrantlyUnhinged_88'
+]
 const anonAvatars = ['🐸','🦆','🐢','🦎','🐧','🦉','🦝','🐨','🐻','🐼']
 
 function rand(arr) { return arr[Math.floor(Math.random() * arr.length)] }

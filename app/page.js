@@ -437,8 +437,8 @@ export default function Home(){
         .judge-name{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:1px;color:var(--purple);}
         .judge-subtitle{font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,.25);}
         .judge-close{margin-left:auto;background:rgba(255,255,255,.05);border:none;color:rgba(255,255,255,.35);width:24px;height:24px;border-radius:50%;cursor:pointer;font-size:11px;}
-        .judge-messages{display:flex;flex-direction:column;gap:8px;margin-bottom:10px;}
-        .judge-msg{font-family:'DM Mono',monospace;font-size:12px;line-height:1.6;color:rgba(255,255,255,.75);padding:10px 12px;background:rgba(199,125,255,.06);border-radius:8px;border-left:2px solid var(--purple);}
+        .judge-messages{display:flex;flex-direction:column;gap:8px;margin-bottom:10px;max-height:400px;overflow-y:auto;}
+        .judge-msg{font-family:'Syne',sans-serif;font-size:13px;line-height:1.6;color:rgba(255,255,255,.75);padding:10px 12px;background:rgba(199,125,255,.06);border-radius:8px;border-left:2px solid var(--purple);}
         .user-defense{font-family:'DM Mono',monospace;font-size:12px;line-height:1.6;color:rgba(255,255,255,.55);padding:8px 12px;background:rgba(255,255,255,.03);border-radius:8px;border-left:2px solid rgba(255,255,255,.15);}
         .judge-typing{opacity:.5;font-style:italic;}
         .judge-input-row{display:flex;gap:6px;}

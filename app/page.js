@@ -218,7 +218,22 @@ function VerdictModal({post,onClose}){
           <div className="vc-badge" style={{color:verdict.color,borderColor:verdict.color,background:verdict.color+'22'}}>⚖️ Certified by Judge Loser</div>
           <div className="vc-footer">The Court of Public Humiliation · amiloser.com</div>
         </div>
-        <button className="modal-copy-btn" onClick={()=>{navigator.clipboard.writeText(text);alert('Copied! Go post your shame 🌍')}}>📋 Copy & Share</button>
+        <div style={{display:'flex',flexDirection:'column',gap:'8px'}}>
+  <button className="modal-copy-btn" style={{background:'#000',boxShadow:'3px 3px 0 #333'}} onClick={()=>{
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`,'_blank')
+  }}>𝕏 Post to X / Twitter</button>
+  <button className="modal-copy-btn" style={{background:'linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)',boxShadow:'none'}} onClick={()=>{
+    navigator.clipboard.writeText(text)
+    alert('Copied! Paste into Instagram 📱')
+  }}>📸 Copy for Instagram</button>
+  <button className="modal-copy-btn" style={{background:'#1877f2',boxShadow:'3px 3px 0 #0d5bb5'}} onClick={()=>{
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://amiloser.com/post/'+post.id)}`,'_blank')
+  }}>📘 Share to Facebook</button>
+  <button className="modal-copy-btn" style={{background:'rgba(255,255,255,0.08)',fontSize:'15px',boxShadow:'none'}} onClick={()=>{
+    navigator.clipboard.writeText(text)
+    alert('Copied!')
+  }}>📋 Copy text</button>
+</div>
       </div>
     </div>
   )
